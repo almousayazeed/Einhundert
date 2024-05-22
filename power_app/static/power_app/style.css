@@ -1,0 +1,9 @@
+/* Add your style here for the plots*/
+.plots-container {
+    display: flex; /* Arrange plots horizontally */
+    justify-content: space-around; /* Distribute plots evenly */
+}
+.plot {
+    width: 30%;  
+    height: 400px; 
+}

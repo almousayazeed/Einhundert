@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Power Analysis</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'power_app/style.css' %}">
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="selected_day">Select Day:</label>
+        <select name="selected_day" id="selected_day">
+            {% for day in available_days %}
+                <option value="{{ day }}">{{ day }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Load Data</button>
+    </form>
+    <div class="plots-container">
+        {% if plot_divs %}
+            {% for plot_div in plot_divs %}
+                <div class="plot">{{ plot_div|safe }}</div>
+            {% endfor %}
+        {% else %}
+            <p>No data loaded yet. Click the button to load and display plots.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
